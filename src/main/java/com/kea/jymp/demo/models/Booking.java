@@ -1,5 +1,6 @@
 package com.kea.jymp.demo.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Booking {
@@ -7,19 +8,27 @@ public class Booking {
     private int id;
     private int roomId;
     private int userId;
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private int noOfGuests;
 
     public Booking() {
     }
 
-    public Booking(int roomId, int userId, Date startDate, Date endDate, int noOfGuests) {
+    public Booking(int roomId, int userId, LocalDate startDate, LocalDate endDate, int noOfGuests) {
         this.roomId = roomId;
         this.userId = userId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.noOfGuests = noOfGuests;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getRoomId() {
@@ -38,19 +47,19 @@ public class Booking {
         this.userId = userId;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -61,5 +70,4 @@ public class Booking {
     public void setNoOfGuests(int noOfGuests) {
         this.noOfGuests = noOfGuests;
     }
-
 }
