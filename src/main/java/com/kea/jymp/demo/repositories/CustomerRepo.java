@@ -20,6 +20,20 @@ public class CustomerRepo {
         return customers;
     }
 
+    public Customer findOne(int id) {
+        String sql = "SELECT * FROM customer where id = "+id;
+        return jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Customer.class));
+    }
+
+    public void deleteOne(int id) {
+        String sql = "DELETE FROM customer WHERE id = " + id;
+        jdbc.update(sql);
+    }
+
+    public void updateOne(int id, Customer updatedObject){
+        String sql = "UPDATE customer SET first_name = ?, last_name = ?, email = ?";
+        jdbc.update(sql, updatedObject.getFirstName(), updatedObject.getLastName(), updatedObject.getEmail());
+    }
 
 
 }
