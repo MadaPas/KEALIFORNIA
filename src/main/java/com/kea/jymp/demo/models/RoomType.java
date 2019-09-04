@@ -1,16 +1,16 @@
 package com.kea.jymp.demo.models;
 
-public class Type {
+public class RoomType {
 
     private int id;
     private String name;
     private int capacity;
     private double price;
 
-    public Type() {
+    public RoomType() {
     }
 
-    public Type(String name, int capacity, double price) {
+    public RoomType(String name, int capacity, double price) {
         this.name = name;
         this.capacity = capacity;
         this.price = price;
