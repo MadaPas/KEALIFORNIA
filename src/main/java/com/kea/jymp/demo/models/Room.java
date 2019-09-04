@@ -4,14 +4,14 @@ public class Room {
 
     private int id;
     private boolean isFree;
-    private int typeId;
+    private RoomType roomType;
 
     public Room() {
     }
 
-    public Room(boolean isFree, int typeId) {
+    public Room(boolean isFree, RoomType roomType) {
         this.isFree = isFree;
-        this.typeId = typeId;
+        this.roomType = roomType;
     }
 
     public int getId() {
@@ -30,12 +30,11 @@ public class Room {
         isFree = free;
     }
 
-    public int getTypeId() {
-        return typeId;
+    public RoomType getRoomType() {
+        return roomType;
     }
 
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
     }
-
 }
