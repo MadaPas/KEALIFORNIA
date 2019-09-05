@@ -37,7 +37,7 @@ public class RoomController {
     @PutMapping("/api/rooms/{id}")
     @ResponseBody
     public void updateOne(@PathVariable int id, @RequestBody Room roomToUpdate) {
-
+        roomRepo.updateOne(id, roomToUpdate);
     }
 
     // Delete one room
