@@ -27,6 +27,16 @@ public class RoomTypeRepo {
 
     }
 
+    public void deleteOne(int id){
+        String sql = "DELETE FROM roomType WHERE ID = "+id;
+        jdbc.update(sql);
+    }
+
+    public void updateOne(int id, RoomType updatedRoomType){
+        String sql = "UPDATE roomType SET name = ?, capacity = ?, price = ? WHERE id = "+id;
+        jdbc.update(sql, updatedRoomType.getName(), updatedRoomType.getCapacity(), updatedRoomType.getPrice());
+    }
+
 
 
 }
