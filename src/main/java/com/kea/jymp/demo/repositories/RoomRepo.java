@@ -32,8 +32,9 @@ public class RoomRepo {
         return rooms;
     }
     public Room findOne(int id) {
-        String sql = "SELECT * FROM room WHERE id = "+id;
-        return jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Room.class));
+        String sql = getJoinedQuery() + " WHERE r.id = ?";
+        List<Room> rooms = jdbc.query(sql, new Object[] {id}, resultSetExtractor);
+        return rooms.get(0);
 
     }
 
@@ -51,6 +52,9 @@ public class RoomRepo {
         jdbc.update(sql);
     }
 
-
+    public void updateOne(int id, Room roomToUpdate){
+        String sql = "UPDATE room SET isFree = ?, type_id = ? WHERE id = ?;";
+        jdbc.update(sql, roomToUpdate.isFree(), roomToUpdate.getRoomType(), id);
+    }
 
 }
