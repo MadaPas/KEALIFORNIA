@@ -5,9 +5,7 @@ import com.kea.jymp.demo.repositories.RoomRepo;
 import com.kea.jymp.demo.services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,18 +17,36 @@ public class RoomController {
     @Autowired
     RoomService roomService;
 
-    // Get all bookings
+    // Get all rooms
     @GetMapping("/api/rooms")
     @ResponseBody
     public List<Room> findAll() {
         List<Room> rooms = roomRepo.findAll();
         return rooms;
-    } // Get one bookings
+    }
+
+    // Get one room
     @GetMapping("/api/rooms/{id}")
     @ResponseBody
     public Room findOne(@PathVariable int id) {
         Room room = roomService.populateRoomInfo(roomRepo.findOne(id));
         return room;
     }
+
+    // Update one room
+    @PutMapping("/api/rooms/{id}")
+    @ResponseBody
+    public void updateOne(@PathVariable int id, @RequestBody Room roomToUpdate) {
+        roomRepo.updateOne(id, roomToUpdate);
+    }
+
+    // Delete one room
+    @DeleteMapping("/api/rooms/{id}")
+    @ResponseBody
+    public void deleteOne(int id){
+        roomRepo.deleteOne(id);
+    }
+
+
 
 }
