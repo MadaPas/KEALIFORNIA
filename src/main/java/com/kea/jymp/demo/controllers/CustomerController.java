@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RestController
 public class CustomerController {
 
     @Autowired
@@ -32,16 +31,14 @@ public class CustomerController {
     }
 
     // Delete one customer
-    @CrossOrigin
-    @DeleteMapping("/api/customers/{id]")
+    @DeleteMapping("/api/customers/{id}")
     @ResponseBody
     public void deleteOne(@PathVariable int id) {
         customerRepo.deleteOne(id);
     }
 
     // Update one customer
-    @CrossOrigin
-    @PutMapping("/api/customers/{id]")
+    @PutMapping("/api/customers/{id}")
     @ResponseBody
     public void updateOne(@PathVariable int id, @RequestBody Customer updatedObject){
 

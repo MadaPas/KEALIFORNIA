@@ -46,6 +46,11 @@ public class RoomRepo {
         return query;
     }
 
+    public void deleteOne(int id){
+        String sql = "DELETE FROM room WHERE ID = "+id;
+        jdbc.update(sql);
+    }
+
 
 
 }
