@@ -1,11 +1,16 @@
 package com.kea.jymp.demo.repositories;
 
+import com.kea.jymp.demo.models.Room;
 import com.kea.jymp.demo.models.RoomType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 
 @Repository
@@ -18,6 +23,25 @@ public class RoomTypeRepo {
         String sql = "SELECT * FROM roomType";
         List<RoomType> roomTypes = jdbc.query(sql, new BeanPropertyRowMapper<>(RoomType.class));
         return roomTypes;
+    }
+
+    public int addOne(RoomType newRoomType){
+        String sql = "INSERT INTO roomType (name, capacity, price) VALUES(?,?,?);";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbc.update((Connection connection)->{
+
+            PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
+
+            ps.setString(1,newRoomType.getName());
+            ps.setInt(2,newRoomType.getCapacity());
+            ps.setDouble(3,newRoomType.getPrice());
+
+            return ps;
+        },keyHolder);
+
+        return keyHolder.getKey().intValue();
+
     }
 
     public RoomType findOne(int typeId) {
