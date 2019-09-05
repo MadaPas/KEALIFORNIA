@@ -32,8 +32,9 @@ public class RoomRepo {
         return rooms;
     }
     public Room findOne(int id) {
-        String sql = "SELECT * FROM room WHERE id = "+id;
-        return jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Room.class));
+        String sql = getJoinedQuery() + " WHERE r.id = ?";
+        List<Room> rooms = jdbc.query(sql, new Object[] {id}, resultSetExtractor);
+        return rooms.get(0);
 
     }
 
