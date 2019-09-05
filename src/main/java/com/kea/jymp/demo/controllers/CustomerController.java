@@ -24,7 +24,7 @@ public class CustomerController {
     }
 
     // Post new customer
-    @PostMapping
+    @PostMapping("/api/customers")
     @ResponseBody
     public int addOne(@RequestBody Customer newCustomer){
         return customerRepo.addOne(newCustomer);
