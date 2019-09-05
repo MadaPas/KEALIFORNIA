@@ -25,6 +25,13 @@ public class RoomController {
         return rooms;
     }
 
+    // Add one room
+    @PostMapping("/api/rooms")
+    @ResponseBody
+    public int addOne(@RequestBody Room newRoom){
+        return roomRepo.addOne(newRoom);
+    }
+
     // Get one room
     @GetMapping("/api/rooms/{id}")
     @ResponseBody
