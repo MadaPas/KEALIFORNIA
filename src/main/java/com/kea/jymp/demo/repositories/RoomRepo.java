@@ -54,7 +54,7 @@ public class RoomRepo {
 
     public void updateOne(int id, Room roomToUpdate){
         String sql = "UPDATE room SET isFree = ?, type_id = ? WHERE id = ?;";
-        jdbc.update(sql, roomToUpdate.isFree(), roomToUpdate.getRoomType(), id);
+        jdbc.update(sql, roomToUpdate.isFree(), roomToUpdate.getRoomType().getId(), id);
     }
 
 }
