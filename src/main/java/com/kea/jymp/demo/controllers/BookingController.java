@@ -22,6 +22,13 @@ public class BookingController {
         return bookings;
     }
 
+    // Add one booking
+    @PostMapping("/api/bookings")
+    @ResponseBody
+    public int addOne(@RequestBody Booking newBooking){
+        return bookingRepo.addOne(newBooking);
+    }
+
     // Get one bookings
     @GetMapping("/api/bookings/{id}")
     @ResponseBody
