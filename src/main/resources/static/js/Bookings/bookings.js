@@ -21,5 +21,15 @@ let booking;
     })
         .done(console.log("ajax sent"));
 
+    $.ajax({
+        type: 'GET',
+        url:'/api/bookings',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8'
+    })
+        .done(data => {
+            console.log(data);
+        });
+
 
 });
