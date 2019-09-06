@@ -23,6 +23,13 @@ public class CustomerController {
         return customers;
     }
 
+    // Post new customer
+    @PostMapping("/api/customers")
+    @ResponseBody
+    public int addOne(@RequestBody Customer newCustomer){
+        return customerRepo.addOne(newCustomer);
+    }
+
     // Get one customer
     @GetMapping("/api/customers/{id}")
     @ResponseBody

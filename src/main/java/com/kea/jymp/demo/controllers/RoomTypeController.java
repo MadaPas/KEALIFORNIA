@@ -25,6 +25,13 @@ public class RoomTypeController {
 
     }
 
+    // Add one roomtype
+    @PostMapping("/api/roomtypes")
+    @ResponseBody
+    public int addOne(@RequestBody RoomType newRoomType){
+        return roomTypeRepo.addOne(newRoomType);
+    }
+
     // Get one roomtype
     @GetMapping("/api/roomtypes/{id}")
     @ResponseBody
