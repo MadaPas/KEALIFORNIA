@@ -7361,7 +7361,7 @@ header {
   header .navbar {
     padding-top: 0;
     padding-bottom: 0;
-    background: none !important;
+    /*background: none !important;*/
     position: relative;
     font-family: "Montserrat", sans-serif; }
     @media (max-width: 1199.98px) {
