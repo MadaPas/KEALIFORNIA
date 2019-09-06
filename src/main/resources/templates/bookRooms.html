@@ -5,8 +5,53 @@
 <body>
 
 <header role="banner" th:replace="fragments/fragments :: header">
+    <link rel="stylesheet" th:href="@{../static/css/datepicker.css}">
 </header>
 
+<div mbsc-form>
+    <div class="mbsc-grid mbsc-form-grid">
+        <div class="mbsc-row">
+            <div class="mbsc-col-sm-12 mbsc-col-md-4">
+                <label>
+                    Mobile
+                    <input mbsc-input id="demo-calendar-mobile" data-input-style="box" data-label-style="stacked" />
+                </label>
+            </div>
+            <div class="mbsc-col-sm-12 mbsc-col-md-4">
+                <label>
+                    Desktop
+                    <input mbsc-input id="demo-calendar-desktop" data-input-style="box" data-label-style="stacked" />
+                </label>
+            </div>
+            <div class="mbsc-col-sm-12 mbsc-col-md-4">
+                <label>
+                    Header text
+                    <input mbsc-input id="demo-calendar-header" data-input-style="box" data-label-style="stacked" />
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mbsc-note mbsc-note-primary mbsc-align-center">Use the calendar on any non-mobiscroll form field.</div>
+<div class="mbsc-grid">
+    <div class="mbsc-row">
+        <div class="mbsc-col-sm-12 mbsc-col-md-6">
+            <label for="demo-calendar-non-form">Date</label>
+            <input id="demo-calendar-non-form" class="demo-non-form" />
+        </div>
+        <div class="mbsc-col-sm-12 mbsc-col-md-6">
+            <div class="mbsc-row mbsc-align-items-end">
+                <div class="mbsc-col-9">
+                    <label for="demo-calendar-date-external">Show on button click only</label>
+                    <input id="demo-calendar-date-external" class="demo-non-form" />
+                </div>
+                <div class="mbsc-col-3 external-container">
+                    <button id="show-demo-calendar-date-external" class="external-button">Show</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -24,6 +69,7 @@
 <script src="js/jquery.waypoints.min.js"></script>
 <script src="js/jquery.fancybox.min.js"></script>
 <script src="js/main.js"></script>
+<script th:src="@{/js/Bookings/Datepicker.js}"></script>
 
 <script src="js/main.js"></script>
 
