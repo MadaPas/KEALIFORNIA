@@ -51,7 +51,7 @@ public class PageController {
     public String manageRooms(){
 
         System.out.println("manage rooms");
-        return "managerooms.html";
+        return "manageRooms.html";
     }
 
     // Manage bookings
@@ -59,7 +59,7 @@ public class PageController {
     public String manageBookings(){
 
         System.out.println("manage bookings");
-        return "managebookings.html";
+        return "manageBookings.html";
     }
 
 
