@@ -7340,7 +7340,7 @@ textarea.form-control {
 /* Header */
 header {
   position: absolute;
-  top: 30px;
+  /*top: 30px;*/
   left: 0;
   width: 100%;
   z-index: 5; }
@@ -7361,7 +7361,7 @@ header {
   header .navbar {
     padding-top: 0;
     padding-bottom: 0;
-    background: none !important;
+    background: black !important;
     position: relative;
     font-family: "Montserrat", sans-serif; }
     @media (max-width: 1199.98px) {
