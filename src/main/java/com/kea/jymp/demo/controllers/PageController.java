@@ -8,6 +8,14 @@ public class PageController {
 
     // Index
     @GetMapping("/")
+    public String landing(){
+
+        System.out.println("homepage");
+        return "index.html";
+    }
+
+    // Index
+    @GetMapping("/index")
     public String index(){
 
         System.out.println("homepage");
@@ -26,7 +34,7 @@ public class PageController {
     @GetMapping("/bookrooms")
     public String boomRooms(){
 
-        System.out.println("boom rooms");
+        System.out.println("book rooms");
         return "bookRooms.html";
     }
 
