@@ -7,8 +7,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 
 @Repository
@@ -24,6 +28,24 @@ public class RoomRepo {
                     .addKeys("id")
                     .newResultSetExtractor(Room.class);
 
+    public int addOne(Room newRoom){
+        String sql = "INSERT INTO room (isFree, type_id) VALUES(?,?);";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbc.update((Connection connection)->{
+
+            PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
+
+            ps.setBoolean(1, newRoom.isFree());
+            ps.setInt(2, newRoom.getRoomType().getId());
+
+            return ps;
+        },keyHolder);
+
+        return keyHolder.getKey().intValue();
+
+    }
+
 
     public List<Room> findAll() {
         String sql = getJoinedQuery();
@@ -32,8 +54,9 @@ public class RoomRepo {
         return rooms;
     }
     public Room findOne(int id) {
-        String sql = "SELECT * FROM room WHERE id = "+id;
-        return jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Room.class));
+        String sql = getJoinedQuery() + " WHERE r.id = ?";
+        List<Room> rooms = jdbc.query(sql, new Object[] {id}, resultSetExtractor);
+        return rooms.get(0);
 
     }
 
@@ -51,6 +74,9 @@ public class RoomRepo {
         jdbc.update(sql);
     }
 
-
+    public void updateOne(int id, Room roomToUpdate){
+        String sql = "UPDATE room SET isFree = ?, type_id = ? WHERE id = ?;";
+        jdbc.update(sql, roomToUpdate.isFree(), roomToUpdate.getRoomType().getId(), id);
+    }
 
 }

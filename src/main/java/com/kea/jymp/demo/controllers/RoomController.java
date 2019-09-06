@@ -25,6 +25,13 @@ public class RoomController {
         return rooms;
     }
 
+    // Add one room
+    @PostMapping("/api/rooms")
+    @ResponseBody
+    public int addOne(@RequestBody Room newRoom){
+        return roomRepo.addOne(newRoom);
+    }
+
     // Get one room
     @GetMapping("/api/rooms/{id}")
     @ResponseBody
@@ -37,7 +44,7 @@ public class RoomController {
     @PutMapping("/api/rooms/{id}")
     @ResponseBody
     public void updateOne(@PathVariable int id, @RequestBody Room roomToUpdate) {
-
+        roomRepo.updateOne(id, roomToUpdate);
     }
 
     // Delete one room
