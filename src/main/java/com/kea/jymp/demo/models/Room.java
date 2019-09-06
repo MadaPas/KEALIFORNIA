@@ -14,6 +14,12 @@ public class Room {
         this.roomType = roomType;
     }
 
+    public Room(int id, boolean isFree, RoomType roomType) {
+        this.id = id;
+        this.isFree = isFree;
+        this.roomType = roomType;
+    }
+
     public int getId() {
         return id;
     }

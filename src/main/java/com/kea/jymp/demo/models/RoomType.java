@@ -6,14 +6,24 @@ public class RoomType {
     private String name;
     private int capacity;
     private double price;
+    private String description;
 
     public RoomType() {
     }
 
-    public RoomType(String name, int capacity, double price) {
+    public RoomType(int id, String name, int capacity, double price, String description) {
+        this.id = id;
         this.name = name;
         this.capacity = capacity;
         this.price = price;
+        this.description = description;
+    }
+
+    public RoomType(String name, int capacity, double price, String description) {
+        this.name = name;
+        this.capacity = capacity;
+        this.price = price;
+        this.description = description;
     }
 
 
@@ -47,6 +57,14 @@ public class RoomType {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }
