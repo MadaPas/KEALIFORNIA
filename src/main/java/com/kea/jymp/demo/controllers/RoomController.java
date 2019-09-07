@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -30,6 +31,15 @@ public class RoomController {
     @ResponseBody
     public int addOne(@RequestBody Room newRoom){
         return roomRepo.addOne(newRoom);
+    }
+
+    // Find rooms available within given period
+    @GetMapping("/api/rooms/from/{date1}/to/{date2}")
+    @ResponseBody
+    public List<Room> findBetweenDates(@PathVariable(name = "date1") String sDate, @PathVariable(name = "date2") String eDate){
+
+        return roomService.getRoomsWithinPeriod(sDate, eDate);
+
     }
 
     // Get one room
