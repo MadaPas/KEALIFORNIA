@@ -1,12 +1,131 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments/fragments :: head(title = 'KEALIFORNIA')">
+<head th:replace="fragments/fragments :: head(title = 'KEALIFORNIA reservation')">
 </head>
 <body>
 
 <header role="banner" th:replace="fragments/fragments :: header">
+    <link rel="stylesheet" th:href="@{../static/css/datepicker.css}">
 </header>
 
+
+<div mbsc-form>
+    <div class="mbsc-grid mbsc-form-grid">
+        <div class="mbsc-row">
+            <div class="mbsc-col-sm-12 mbsc-col-md-4">
+                <label>
+<!--                    Mobile-->
+<!--                    <input mbsc-input id="demo-calendar-mobile" data-input-style="box" data-label-style="stacked" />-->
+                </label>
+            </div>
+            <div class="mbsc-col-sm-12 mbsc-col-md-4">
+                <label>
+<!--                    Desktop-->
+<!--                    <input mbsc-input id="demo-calendar-desktop" data-input-style="box" data-label-style="stacked" />-->
+                </label>
+            </div>
+            <div class="mbsc-col-sm-12 mbsc-col-md-4">
+                <label>
+<!--                    Header text-->
+<!--                    <input mbsc-input id="demo-calendar-header" data-input-style="box" data-label-style="stacked" />-->
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="mbsc-note mbsc-note-primary mbsc-align-center">Use the calendar on any non-mobiscroll form field.</div>-->
+
+
+<div class="container-fluid mt-2">
+
+    <form id="select-dates">
+        <h2>Please select dates</h2>
+        <div class="row">
+            <div class="form-group col-sm">
+                <label for="start-date">FROM</label>
+                <input type="date" class="form-control" id="start-date" placeholder="Enter date">
+            </div>
+            <div class="form-group col-sm">
+                <label for="end-date">TO</label>
+                <input type="date" class="form-control" id="end-date" placeholder="Enter date">
+            </div>
+        </div>
+        <div align="center">
+            <a id="showRoomsButton" class="btn btn-outline-dark btn-lg btn-block">Show available rooms</a>
+        </div>
+    </form>
+
+    <div id="roomContainer">
+    <!--        here comes available rooms table-->
+    </div>
+
+
+    <div id="customerInfoContainer">
+    <!--        here comes customer information input field-->
+    </div>
+
+</div>
+
+<!--Confirmation Modal-->
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Room successfully reserved!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm">First Name:</div>
+                    <div class="col-sm" id="confirm-first-name"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Last Name:</div>
+                    <div class="col-sm" id="confirm-last-name"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Email:</div>
+                    <div class="col-sm" id="confirm-email"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Dates:</div>
+                    <div class="col-sm" id="confirm-dates"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Room Type:</div>
+                    <div class="col-sm" id="confirm-room-type"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark">Confirm</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="mbsc-grid">-->
+<!--    <div class="mbsc-row">-->
+<!--        <div class="mbsc-col-sm-12 mbsc-col-md-6">-->
+<!--            <label for="demo-calendar-non-form">Date</label>-->
+<!--            <input id="demo-calendar-non-form" class="demo-non-form" />-->
+<!--        </div>-->
+<!--        <div class="mbsc-col-sm-12 mbsc-col-md-6">-->
+<!--            <div class="mbsc-row mbsc-align-items-end">-->
+<!--                <div class="mbsc-col-9">-->
+<!--                    <label for="demo-calendar-date-external">Show on button click only</label>-->
+<!--                    <input id="demo-calendar-date-external" class="demo-non-form" />-->
+<!--                </div>-->
+<!--                <div class="mbsc-col-3 external-container">-->
+<!--                    <button id="show-demo-calendar-date-external" class="external-button">Show</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 
@@ -24,8 +143,10 @@
 <script src="js/jquery.waypoints.min.js"></script>
 <script src="js/jquery.fancybox.min.js"></script>
 <script src="js/main.js"></script>
-
-<script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--<script th:src="@{/js/Bookings/Datepicker.js}"></script>-->
+<script th:src="@{/js/Bookings/bookRooms.js}"></script>
 
 </body>
 </html>
