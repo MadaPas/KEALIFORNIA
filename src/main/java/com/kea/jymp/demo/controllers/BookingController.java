@@ -37,9 +37,8 @@ public class BookingController {
     @GetMapping("/api/bookings/from/{date1}/to/{date2}")
     @ResponseBody
     public List<Booking> findBetweenDates(@PathVariable(name = "date1") String startDate, @PathVariable(name = "date2") String endDate){
-        LocalDate sDate = LocalDate.parse(startDate);
-        LocalDate eDate = LocalDate.parse(endDate);
-        return bookingRepo.findBetweenDates(sDate, eDate);
+
+        return bookingRepo.findBetweenDates(startDate, endDate);
     }
 
     @GetMapping("/api/bookings/from/{date1}")
