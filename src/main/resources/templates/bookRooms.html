@@ -35,6 +35,8 @@
 </div>
 
 <!--<div class="mbsc-note mbsc-note-primary mbsc-align-center">Use the calendar on any non-mobiscroll form field.</div>-->
+
+
 <div class="container-fluid mt-2">
 
     <form id="select-dates">
@@ -65,11 +67,11 @@
                     <th class="col-1"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="availableRoom-table">
                 <tr class="d-flex">
-                    <td class="col-3">Standard</td>
-                    <td class="col-3">Single</td>
-                    <td class="col-5">Single bed in a cozy room for one person.</td>
+                    <td class="col-3" id="roomType"></td>
+                    <td class="col-3" id="bedType"></td>
+                    <td class="col-5" id="description"></td>
                     <td class="col-1 far fa-check-square"></td>
                 </tr>
             </tbody>
@@ -77,8 +79,65 @@
         </table>
     </form>
 
+    <form id="customer-info">
+        <h2>Please fill in the information.</h2>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" class="form-control" id="first-name">
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" class="form-control" id="last-name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+        <div align="center">
+            <button type="submit" class="btn btn-outline-dark btn-lg btn-block">Confirm Reservation</button>
+        </div>
+    </form>
 
+</div>
 
+<!--Confirmation Modal-->
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Room successfully reserved!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm">First Name:</div>
+                    <div class="col-sm" id="confirm-first-name"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Last Name:</div>
+                    <div class="col-sm" id="confirm-last-name"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Email:</div>
+                    <div class="col-sm" id="confirm-email"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Dates:</div>
+                    <div class="col-sm" id="confirm-dates"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Room Type:</div>
+                    <div class="col-sm" id="confirm-room-type"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark">Confirm</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--<div class="mbsc-grid">-->
