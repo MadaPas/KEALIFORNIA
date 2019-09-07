@@ -48,10 +48,12 @@ public class BookingRepo {
 
     }
 
-    public List<Booking> findBetweenDates(LocalDate startDate, LocalDate endDate){
+    public List<Booking> findBetweenDates(String startDate, String endDate){
+        LocalDate sDate = LocalDate.parse(startDate);
+        LocalDate eDate = LocalDate.parse(endDate);
 
-        System.out.println("received start date: " + startDate);
-        System.out.println("received end date  : " + endDate);
+        System.out.println("received start date: " + sDate);
+        System.out.println("received end date  : " + eDate);
 
         // Get all bookings
         List<Booking> allBookings = findAll();
@@ -66,7 +68,7 @@ public class BookingRepo {
             // help
 
             // if current booking ends in the period OR starts in the period
-            if((cEndDate.isBefore(endDate) && (cEndDate.isAfter(startDate))) || (cStartDate.isAfter(startDate) && cStartDate.isBefore(endDate))){
+            if((cEndDate.isBefore(eDate) && (cEndDate.isAfter(sDate))) || (cStartDate.isAfter(sDate) && cStartDate.isBefore(eDate))){
                 System.out.println("date with id of "+cBooking.getId() + " is in given period");
                 //allBookings.remove(cBooking);
                 sortedBookings.add(cBooking);
