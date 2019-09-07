@@ -2,33 +2,41 @@ $(function() {
 
     console.log('bookRooms js loaded');
 
-    let roomType =[];
-    let room = [];
 
-    function getRoomTypeInfo() {
+
+    let roomTypes = [];
+    let room;
+
+    let getRoomTypeInfo = () => {
         $.ajax({
+            type: 'GET',
             url: `/api/roomtypes`,
-            method: 'GET',
+            contentType: 'application/json; charset=utf-8',
             dataType: 'json'
         }).done(
-            roomType => {
-                roomType.push(roomType);
-                console.log('after ajax', roomType);
+            data => {
+                roomTypes = data;
+                console.log('after ajax');
             })
     }
 
+
     $('#showRoomsButton').on('click', function() {
 
+        getRoomTypeInfo();
         console.log('button clicked');
 
-        roomType.push(getRoomTypeInfo());
-        console.log(roomType);
-        showAvailableRooms(roomType);
+        //roomType.push(getRoomTypeInfo());
+        //console.log(roomType);
+        showAvailableRooms(roomTypes);
     });
 
-    function showAvailableRooms(roomType) {
+    function showAvailableRooms(roomTypes) {
 
-        $('#roomContainer').fadeIn(100).html(`<form class="mt-2">
+        console.log("showing available rooms"   )
+        roomTypes.forEach(createRow);
+
+        /*$('#roomContainer').fadeIn(100).html(`<form class="mt-2">
                                                 <h2>Available Rooms</h2>
                                                 <table class="table">
                                                     <thead>
@@ -42,16 +50,31 @@ $(function() {
                                                     </thead>
                                                     <tbody id="availableRoom-table">
                                                         <tr class="d-flex">
-                                                            <td class="col-3" id="roomType">${roomType.name}</td>
-                                                            <td class="col-2" id="capacity">${roomType.capacity}</td>
-                                                            <td class="col-1" id="price">${roomType.price}</td>
-                                                            <td class="col-5" id="description">${roomType.description}</td>
+                                                            <td class="col-3" id="roomType">${roomTypes.name}</td>
+                                                            <td class="col-2" id="capacity">${roomTypes.capacity}</td>
+                                                            <td class="col-1" id="price">${roomTypes.price}</td>
+                                                            <td class="col-5" id="description">${roomTypes.description}</td>
                                                             <td class="col-1 far fa-check-square"></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                            </form>`);
+                                            </form>`);*/
 
+    }
+
+    function createRow(item, index){
+
+        console.log(item);
+
+        let html = `
+        <tr class="d-flex">
+            <td class="col-3" >${item.name}</td>
+            <td class="col-2" >${item.capacity}</td>
+            <td class="col-1" >${item.price}</td>
+            <td class="col-5" >${item.description}</td>
+            <td class="col-1 far fa-check-square"></td>
+        </tr>
+        `
     }
 
     function showCustomerInput() {
