@@ -3,7 +3,7 @@ $(function() {
     console.log('bookRooms js loaded');
 
     let roomTypes;
-    let selectedRoomType, selectedRoom;
+    let selectedRoomType, selectedRoomName, selectedRoom;
     let customerInfo, period, guestsNo, booking;
     let roomsWithin, roomsWithType;
 
@@ -48,25 +48,6 @@ $(function() {
         )
 
     }
-
-    // function getAvailableRoomsOfType(rooms, roomtypeid) {
-    //
-    //     console.log('rooms', rooms);
-    //     console.log('roomtypeid', roomtypeid);
-    //
-    //     rooms.forEach(function (room) {
-    //         console.log('this foreach works');
-    //         room.forEach((roomroom) => {
-    //             console.log('roomroom', roomroom);
-    //         })
-    //         // console.log(room.roomType.id);
-    //         // if(room.roomType.id != roomtypeid) {
-    //         //     rooms.remove(room);
-    //         // }
-    //     });
-    //
-    //     // return rooms;
-    // }
 
     $('#showRoomsButton').on('click', function() {
 
@@ -114,25 +95,9 @@ $(function() {
 
     $('#roomContainer').on('click', 'a', function() {
        selectedRoomType = $(this).parent().attr('data-attr');
+       selectedRoomName = $(this).parent().siblings('td')[0].innerHTML;
 
        getRooms(period.startDate, period.endDate, selectedRoomType);
-
-       // getAvailableRoomsOfType(roomsWithin, selectedRoomType);
-
-       //  let roomList =
-       //      console.log('roomlist', roomList);
-       // selectedRoom = roomList[0];
-       // console.log(selectedRoom);
-
-       // if(roomList.length >= 0) {
-       //     showCustomerInput();
-       //     selectedRoom = roomList[0];
-       //     console.log('selectedRoom', selectedRoom);
-       // } else {
-       //     alert('There is no available room. Please select another room type.')
-       // }
-       //
-
        showCustomerInput();
 
     });
@@ -188,18 +153,39 @@ $(function() {
                     'endDate': period.endDate,
                     'noOfGuests': guestsNo
                 }
+
                 console.log('newbooking', booking);
+                showModal(booking);
+
+                $.ajax({
+                    url:`/api/bookings`,
+                    method: 'POST',
+                    data: JSON.stringify(booking),
+                    contentType: 'application/json; charset=utf-8'
+                }).done(
+                    data => {
+                        console.log('reservation saved', data);
+                    })
             })
-        showModal();
+
     });
 
-    function showModal() {
+    function showModal(booking) {
 
         $('#confirm-first-name').html(`${customerInfo.firstName}`);
         $('#confirm-last-name').html(`${customerInfo.lastName}`);
-        $('#confirm-dates').html(`${booking.startDate} - ${booking.endDate}`);
+        $('#confirm-email').html(`${customerInfo.email}`);
+        $('#confirm-dates').html(`${booking.startDate} to ${booking.endDate}`);
+        $('#confirm-room-type').html(`${selectedRoomName}`);
+
         $('.modal').modal('show');
 
     }
+
+    $('#confirmButton').on('click', function() {
+        alert('The reservation is made successfully. Thank you for choosing KEALIFORNIA.');
+        $(location).attr('href', `/`);
+
+    })
 
 });
