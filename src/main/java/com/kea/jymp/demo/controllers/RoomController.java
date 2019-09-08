@@ -33,6 +33,12 @@ public class RoomController {
         return roomRepo.addOne(newRoom);
     }
 
+    @GetMapping("/api/rooms/type={id}")
+    @ResponseBody
+    public List<Room> findRoomOfType (@PathVariable int id){
+        return roomRepo.findOfType(id);
+    }
+
     // Find rooms available within given period
     @GetMapping("/api/rooms/from/{date1}/to/{date2}")
     @ResponseBody
