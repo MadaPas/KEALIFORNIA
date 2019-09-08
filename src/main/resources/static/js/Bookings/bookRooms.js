@@ -5,7 +5,7 @@ $(function() {
     let roomTypes;
     let selectedRoomType, selectedRoom;
     let customerInfo, period, guestsNo, booking;
-    let roomsWithin;
+    let roomsWithin, roomsWithType;
 
     getRoomTypeInfo();
 
@@ -21,9 +21,10 @@ $(function() {
             })
     }
 
-    function getRooms(date1, date2) {
+    function getRooms(date1, date2, roomtypeid) {
 
         roomsWithin = [];
+        roomsWithType = [];
 
         $.ajax({
             url:`/api/rooms/from/${date1}/to/${date2}`,
@@ -32,23 +33,40 @@ $(function() {
         }).done(
             data => {
                 roomsWithin.push(data);
-                return roomsWithin;
+                roomsWithin.forEach(function (room){
+                   room.forEach(function(aroom){
+
+                       if(aroom.roomType.id == roomtypeid) {
+                           roomsWithType.push(aroom);
+                       }
+                   })
+                });
+
+                selectedRoom = roomsWithType[0];
+                return selectedRoom;
             }
         )
 
     }
 
-    function getAvailableRoomsOfType(rooms, roomtypeid) {
-
-        rooms.forEach((room)=> {
-            console.log(room.roomType.id);
-            if(room.roomType.id != roomtypeid) {
-                rooms.remove(room);
-            }
-        });
-
-        return rooms;
-    }
+    // function getAvailableRoomsOfType(rooms, roomtypeid) {
+    //
+    //     console.log('rooms', rooms);
+    //     console.log('roomtypeid', roomtypeid);
+    //
+    //     rooms.forEach(function (room) {
+    //         console.log('this foreach works');
+    //         room.forEach((roomroom) => {
+    //             console.log('roomroom', roomroom);
+    //         })
+    //         // console.log(room.roomType.id);
+    //         // if(room.roomType.id != roomtypeid) {
+    //         //     rooms.remove(room);
+    //         // }
+    //     });
+    //
+    //     // return rooms;
+    // }
 
     $('#showRoomsButton').on('click', function() {
 
@@ -97,9 +115,10 @@ $(function() {
     $('#roomContainer').on('click', 'a', function() {
        selectedRoomType = $(this).parent().attr('data-attr');
 
-       getRooms(period.startDate, period.endDate);
-       console.log('roomswithin', roomsWithin);
-       getAvailableRoomsOfType(roomsWithin, selectedRoomType);
+       getRooms(period.startDate, period.endDate, selectedRoomType);
+
+       // getAvailableRoomsOfType(roomsWithin, selectedRoomType);
+
        //  let roomList =
        //      console.log('roomlist', roomList);
        // selectedRoom = roomList[0];
@@ -163,16 +182,22 @@ $(function() {
         }).done(
             data => {
                 booking = {
-
-                    'customerId': data
-
+                    'roomId': selectedRoom.id,
+                    'customerId': data,
+                    'startDate': period.startDate,
+                    'endDate': period.endDate,
+                    'noOfGuests': guestsNo
                 }
+                console.log('newbooking', booking);
             })
         showModal();
     });
 
     function showModal() {
 
+        $('#confirm-first-name').html(`${customerInfo.firstName}`);
+        $('#confirm-last-name').html(`${customerInfo.lastName}`);
+        $('#confirm-dates').html(`${booking.startDate} - ${booking.endDate}`);
         $('.modal').modal('show');
 
     }
