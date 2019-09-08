@@ -1,5 +1,6 @@
 package com.kea.jymp.demo.repositories;
 
+import com.kea.jymp.demo.models.Customer;
 import com.kea.jymp.demo.models.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -47,8 +48,12 @@ public class RoomRepo {
 
     }
 
+    public List<Room> findOfType(int id){
 
+        String sql = "SELECT * FROM room WHERE type_id = "+id;
+        return jdbc.query(sql, new BeanPropertyRowMapper<>(Room.class));
 
+    }
 
     public List<Room> findAll() {
         String sql = getJoinedQuery();
