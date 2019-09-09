@@ -18,7 +18,7 @@ CREATE TABLE `kealifornia`.`customer` (
   
   CREATE TABLE `kealifornia`.`room` (
   `id` INT NOT NULL,
-  `isFree` BIT(1) NULL,
+  `isBooked` BIT(1) NULL,
   `type_id` INT NULL,
   PRIMARY KEY (`id`));
 

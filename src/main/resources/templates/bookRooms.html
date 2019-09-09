@@ -9,6 +9,7 @@
 </header>
 
 
+<!--this doesn't do anything:P-->
 <div mbsc-form>
     <div class="mbsc-grid mbsc-form-grid">
         <div class="mbsc-row">
@@ -34,9 +35,9 @@
     </div>
 </div>
 
-<!--<div class="mbsc-note mbsc-note-primary mbsc-align-center">Use the calendar on any non-mobiscroll form field.</div>-->
 
 
+<!--Select dates-->
 <div class="container-fluid mt-2">
 
     <form id="select-dates">
@@ -60,12 +61,12 @@
     <!--        here comes available rooms table-->
     </div>
 
-
     <div id="customerInfoContainer">
     <!--        here comes customer information input field-->
     </div>
 
 </div>
+
 
 <!--Confirmation Modal-->
 <div class="modal" tabindex="-1" role="dialog">
@@ -100,32 +101,12 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark">Confirm</button>
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                <a type="button" class="btn btn-outline-dark" id="confirmButton">Confirm</a>
+                <a type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</a>
             </div>
         </div>
     </div>
 </div>
-
-<!--<div class="mbsc-grid">-->
-<!--    <div class="mbsc-row">-->
-<!--        <div class="mbsc-col-sm-12 mbsc-col-md-6">-->
-<!--            <label for="demo-calendar-non-form">Date</label>-->
-<!--            <input id="demo-calendar-non-form" class="demo-non-form" />-->
-<!--        </div>-->
-<!--        <div class="mbsc-col-sm-12 mbsc-col-md-6">-->
-<!--            <div class="mbsc-row mbsc-align-items-end">-->
-<!--                <div class="mbsc-col-9">-->
-<!--                    <label for="demo-calendar-date-external">Show on button click only</label>-->
-<!--                    <input id="demo-calendar-date-external" class="demo-non-form" />-->
-<!--                </div>-->
-<!--                <div class="mbsc-col-3 external-container">-->
-<!--                    <button id="show-demo-calendar-date-external" class="external-button">Show</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 
 
@@ -143,6 +124,7 @@
 <script src="js/jquery.waypoints.min.js"></script>
 <script src="js/jquery.fancybox.min.js"></script>
 <script src="js/main.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!--<script th:src="@{/js/Bookings/Datepicker.js}"></script>-->
