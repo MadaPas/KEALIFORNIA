@@ -7,6 +7,7 @@ $(function() {
     let customerInfo, period, guestsNo, booking;
     let roomsWithin, roomsWithType;
 
+    // gets roomTypes from the database
     getRoomTypeInfo();
 
     function getRoomTypeInfo() {
@@ -21,6 +22,7 @@ $(function() {
             })
     }
 
+    // gets rooms that are available of specific type in between two days
     function getRooms(date1, date2, roomtypeid) {
 
         roomsWithin = [];
@@ -49,6 +51,7 @@ $(function() {
 
     }
 
+    // click the button and display the roomTypes that are available
     $('#showRoomsButton').on('click', function() {
 
         period = {
@@ -93,6 +96,7 @@ $(function() {
 
     }
 
+    // when a roomType selected, see if they have room on that period, display customer info input field
     $('#roomContainer').on('click', 'a', function() {
        selectedRoomType = $(this).parent().attr('data-attr');
        selectedRoomName = $(this).parent().siblings('td')[0].innerHTML;
@@ -129,6 +133,7 @@ $(function() {
 
     }
 
+    // create a new customer and booking objects, send them to backend in order to store the data in the db
     $('#customerInfoContainer').on('click', 'a', function() {
 
         customerInfo = {
@@ -170,6 +175,7 @@ $(function() {
 
     });
 
+    // display confirmation modal
     function showModal(booking) {
 
         $('#confirm-first-name').html(`${customerInfo.firstName}`);
@@ -185,7 +191,6 @@ $(function() {
     $('#confirmButton').on('click', function() {
         alert('The reservation is made successfully. Thank you for choosing KEALIFORNIA.');
         $(location).attr('href', `/`);
-
     })
 
 });
