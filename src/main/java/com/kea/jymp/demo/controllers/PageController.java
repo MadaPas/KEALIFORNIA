@@ -34,6 +34,8 @@ public class PageController {
     @GetMapping("/bookrooms")
     public String boomRooms(){
 
+        //TODO: I need to pass the data(roomtype, free rooms and stuff) to the front-end. Maybe I can use Ajax method.
+
         System.out.println("book rooms");
         return "bookRooms.html";
     }

@@ -3,14 +3,20 @@ package com.kea.jymp.demo.models;
 public class Room {
 
     private int id;
-    private boolean isFree;
+    private boolean isBooked;
     private RoomType roomType;
 
     public Room() {
     }
 
-    public Room(boolean isFree, RoomType roomType) {
-        this.isFree = isFree;
+    public Room(boolean isBooked, RoomType roomType) {
+        this.isBooked = isBooked;
+        this.roomType = roomType;
+    }
+
+    public Room(int id, boolean isBooked, RoomType roomType) {
+        this.id = id;
+        this.isBooked = isBooked;
         this.roomType = roomType;
     }
 
@@ -22,12 +28,12 @@ public class Room {
         this.id = id;
     }
 
-    public boolean isFree() {
-        return isFree;
+    public boolean isBooked() {
+        return isBooked;
     }
 
-    public void setFree(boolean free) {
-        isFree = free;
+    public void setBooked(boolean booked) {
+        isBooked = booked;
     }
 
     public RoomType getRoomType() {
