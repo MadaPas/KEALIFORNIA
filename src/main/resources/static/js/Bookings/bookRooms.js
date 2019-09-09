@@ -159,7 +159,6 @@ $(function() {
                     'noOfGuests': guestsNo
                 }
 
-                console.log('newbooking', booking);
                 showModal(booking);
 
                 $.ajax({
