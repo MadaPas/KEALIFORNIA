@@ -30,16 +30,16 @@ public class RoomRepo {
                     .newResultSetExtractor(Room.class);
 
     public int addOne(Room newRoom){
-        String sql = "INSERT INTO room (isBooked, type_id) VALUES(?,?);";
+        String sql = "INSERT INTO room (roomType_id, hotel_id, room_no) VALUES(?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbc.update((Connection connection)->{
 
             PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
 
-            ps.setBoolean(1, newRoom.isBooked());
-            ps.setInt(2, newRoom.getRoomType().getId());
-
+            ps.setInt(1, newRoom.getRoomType().getId());
+            ps.setInt(2,newRoom.getHotel().getId());
+            ps.setInt(3, newRoom.getRoomNo());
             return ps;
         },keyHolder);
 
@@ -49,7 +49,7 @@ public class RoomRepo {
 
     public List<Room> findOfType(int id){
 
-        String sql = "SELECT * FROM room WHERE type_id = "+id;
+        String sql = "SELECT * FROM room WHERE roomType_id = " + id;
         return jdbc.query(sql, new BeanPropertyRowMapper<>(Room.class));
 
     }
@@ -69,21 +69,21 @@ public class RoomRepo {
 
     private String getJoinedQuery() {
         String query =
-                "SELECT r.id as id, r.isBooked," +
-                        "rt.id as roomType_id, rt.name as roomType_name, rt.capacity as roomType_capacity, rt.price as roomType_price" +
+                "SELECT r.id as id, r.hotel_id, r.room_no," +
+                        "rt.id as roomType_id, rt.name as roomType_name, rt.capacity as roomType_capacity, rt.price as roomType_price, rt.description as roomType_description" +
                         " FROM room r" +
                         " JOIN roomType rt ON rt.id = r.type_id";
         return query;
     }
 
     public void deleteOne(int id){
-        String sql = "DELETE FROM room WHERE ID = "+id;
+        String sql = "DELETE FROM room WHERE id = " + id;
         jdbc.update(sql);
     }
 
     public void updateOne(int id, Room roomToUpdate){
-        String sql = "UPDATE room SET isBooked = ?, type_id = ? WHERE id = ?;";
-        jdbc.update(sql, roomToUpdate.isBooked(), roomToUpdate.getRoomType().getId(), id);
+        String sql = "UPDATE room SET roomType_id = ?, hotel_id = ?, room_no = ? WHERE id = ?;";
+        jdbc.update(sql, roomToUpdate.getRoomType(), roomToUpdate.getHotel().getId(), roomToUpdate.getRoomNo(), id);
     }
 
 }

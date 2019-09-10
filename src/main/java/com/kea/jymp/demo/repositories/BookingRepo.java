@@ -96,7 +96,7 @@ public class BookingRepo {
     }
 
     public void updateOne(int id, Booking updatedBooking) {
-        String sql = "UPDATE booking SET room_id = ?, customer_id = ?, start_date = ?, end_date = ?, no_of_guests = ? WHERE id = "+id;
+        String sql = "UPDATE booking SET room_id = ?, user_id = ?, start_date = ?, end_date = ?, no_of_guests = ? WHERE id = "+id;
         jdbc.update(sql, updatedBooking.getRoomId(), updatedBooking.getCustomerId(), updatedBooking.getStartDate(), updatedBooking.getNoOfGuests());
     }
 
