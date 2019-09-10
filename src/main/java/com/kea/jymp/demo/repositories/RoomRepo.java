@@ -1,6 +1,6 @@
 package com.kea.jymp.demo.repositories;
 
-import com.kea.jymp.demo.models.Customer;
+import com.kea.jymp.demo.models.User;
 import com.kea.jymp.demo.models.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -72,7 +72,7 @@ public class RoomRepo {
                 "SELECT r.id as id, r.hotel_id, r.room_no," +
                         "rt.id as roomType_id, rt.name as roomType_name, rt.capacity as roomType_capacity, rt.price as roomType_price, rt.description as roomType_description" +
                         " FROM room r" +
-                        " JOIN roomType rt ON rt.id = r.type_id";
+                        " JOIN roomType rt ON rt.id = r.roomType_id";
         return query;
     }
 

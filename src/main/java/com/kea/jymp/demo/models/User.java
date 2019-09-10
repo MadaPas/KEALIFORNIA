@@ -1,23 +1,23 @@
 package com.kea.jymp.demo.models;
 
-public class Customer {
+public class User {
 
     private int id;
     private String firstName;
     private String lastName;
     private String email;
 
-    public Customer() {
+    public User() {
     }
 
-    public Customer(int id, String firstName, String lastName, String email) {
+    public User(int id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    public Customer(String firstName, String lastName, String email) {
+    public User (String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

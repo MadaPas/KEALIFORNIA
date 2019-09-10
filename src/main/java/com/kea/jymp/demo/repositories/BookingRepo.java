@@ -27,7 +27,7 @@ public class BookingRepo {
     }
 
     public int addOne(Booking newBooking){
-        String sql = "INSERT INTO booking (room_id, customer_id, start_date, end_date, no_of_guests) VALUES(?,?,?,?,?);";
+        String sql = "INSERT INTO booking (room_id, user_id, start_date, end_date, no_of_guests) VALUES(?,?,?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbc.update((Connection connection)->{
@@ -35,7 +35,7 @@ public class BookingRepo {
             PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
 
             ps.setInt(1, newBooking.getRoomId());
-            ps.setInt(2, newBooking.getCustomerId());
+            ps.setInt(2, newBooking.getUserId());
             ps.setObject(3, newBooking.getStartDate());
             ps.setObject(4, newBooking.getEndDate());
             ps.setInt(5, newBooking.getNoOfGuests());
@@ -97,7 +97,7 @@ public class BookingRepo {
 
     public void updateOne(int id, Booking updatedBooking) {
         String sql = "UPDATE booking SET room_id = ?, user_id = ?, start_date = ?, end_date = ?, no_of_guests = ? WHERE id = "+id;
-        jdbc.update(sql, updatedBooking.getRoomId(), updatedBooking.getCustomerId(), updatedBooking.getStartDate(), updatedBooking.getNoOfGuests());
+        jdbc.update(sql, updatedBooking.getRoomId(), updatedBooking.getUserId(), updatedBooking.getStartDate(), updatedBooking.getNoOfGuests());
     }
 
 }
