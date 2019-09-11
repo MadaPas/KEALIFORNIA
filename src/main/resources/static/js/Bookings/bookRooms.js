@@ -4,7 +4,7 @@ $(function() {
 
     let roomTypes;
     let selectedRoomType, selectedRoomName, selectedRoom;
-    let customerInfo, period, guestsNo, booking;
+    let userInfo, period, guestsNo, booking;
     let roomsWithin, roomsWithType;
 
     // gets roomTypes from the database
@@ -96,19 +96,20 @@ $(function() {
 
     }
 
-    // when a roomType selected, see if they have room on that period, display customer info input field
-    $('#roomContainer').on('click', 'a', function() {
+    // when a roomType selected, see if they have room on that period, display user info input field
+    $('#roomContainer').on('click', '.btn-outline-dark', function() {
+        console.log('hh');
        selectedRoomType = $(this).parent().attr('data-attr');
        selectedRoomName = $(this).parent().siblings('td')[0].innerHTML;
 
        getRooms(period.startDate, period.endDate, selectedRoomType);
-       showCustomerInput();
+       showUserInput();
 
     });
 
-    function showCustomerInput() {
+    function showUserInput() {
 
-        $('#customerInfoContainer').fadeIn(100).html(`<form id="customer-info">
+        $('#userInfoContainer').fadeIn(100).html(`<form id="user-info">
                                                         <h2>Please fill in the information.</h2>
                                                             <div class="form-group">
                                                                 <label for="first-name">First Name</label>
@@ -133,10 +134,10 @@ $(function() {
 
     }
 
-    // create a new customer and booking objects, send them to backend in order to store the data in the db
-    $('#customerInfoContainer').on('click', 'a', function() {
+    // create a new user and booking objects, send them to backend in order to store the data in the db
+    $('#userInfoContainer').on('click', 'a', function() {
 
-        customerInfo = {
+        userInfo = {
             'firstName': $('#first-name').val(),
             'lastName': $('#last-name').val(),
             'email': $('#email').val()
@@ -145,15 +146,15 @@ $(function() {
         guestsNo = $('#noOfGuests').val();
 
         $.ajax({
-            url: `/api/customers`,
+            url: `/api/users`,
             method: 'POST',
-            data: JSON.stringify(customerInfo),
+            data: JSON.stringify(userInfo),
             contentType: 'application/json; charset=utf-8',
         }).done(
             data => {
                 booking = {
                     'roomId': selectedRoom.id,
-                    'customerId': data,
+                    'userId': data,
                     'startDate': period.startDate,
                     'endDate': period.endDate,
                     'noOfGuests': guestsNo
@@ -177,9 +178,9 @@ $(function() {
     // display confirmation modal
     function showModal(booking) {
 
-        $('#confirm-first-name').html(`${customerInfo.firstName}`);
-        $('#confirm-last-name').html(`${customerInfo.lastName}`);
-        $('#confirm-email').html(`${customerInfo.email}`);
+        $('#confirm-first-name').html(`${userInfo.firstName}`);
+        $('#confirm-last-name').html(`${userInfo.lastName}`);
+        $('#confirm-email').html(`${userInfo.email}`);
         $('#confirm-dates').html(`${booking.startDate} to ${booking.endDate}`);
         $('#confirm-room-type').html(`${selectedRoomName}`);
 

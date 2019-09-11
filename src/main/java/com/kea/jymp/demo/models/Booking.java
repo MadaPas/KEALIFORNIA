@@ -6,7 +6,7 @@ public class Booking {
 
     private int id;
     private int roomId;
-    private int customerId;
+    private int userId;
     private LocalDate startDate;
     private LocalDate endDate;
     private int noOfGuests;
@@ -14,18 +14,18 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(int id, int roomId, int customerId, LocalDate startDate, LocalDate endDate, int noOfGuests) {
+    public Booking(int id, int roomId, int userId, LocalDate startDate, LocalDate endDate, int noOfGuests) {
         this.id = id;
         this.roomId = roomId;
-        this.customerId = customerId;
+        this.userId = userId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.noOfGuests = noOfGuests;
     }
 
-    public Booking(int roomId, int customerId, LocalDate startDate, LocalDate endDate, int noOfGuests) {
+    public Booking(int roomId, int userId, LocalDate startDate, LocalDate endDate, int noOfGuests) {
         this.roomId = roomId;
-        this.customerId = customerId;
+        this.userId = userId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.noOfGuests = noOfGuests;
@@ -47,12 +47,12 @@ public class Booking {
         this.roomId = roomId;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public LocalDate getStartDate() {
