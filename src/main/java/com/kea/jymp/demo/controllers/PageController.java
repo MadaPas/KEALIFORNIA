@@ -19,7 +19,7 @@ public class PageController {
     public String index(){
 
         System.out.println("homepage");
-        return "index.html";
+        return "home.html";
     }
 
     // Contact

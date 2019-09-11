@@ -3,6 +3,7 @@ package com.kea.jymp.demo.repositories;
 import com.kea.jymp.demo.models.Customer;
 import com.kea.jymp.demo.models.Room;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
