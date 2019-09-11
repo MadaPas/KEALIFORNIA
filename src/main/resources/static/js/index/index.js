@@ -14,7 +14,7 @@ $(function () {
                         "name":data.name
                     };
 
-                    $('ul').append( `<button href="/home" class="list-group-item list-group-item-action" data-hotelid=${hotel.id}>` + `${hotel.name}` + `</button>` );
+                    $('ul').append( `<a href="/home" class="list-group-item list-group-item-action" data-hotelid=${hotel.id}>` + `${hotel.name}` + `</a>` );
                 // <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
 
                  })

@@ -1,5 +1,7 @@
 $(function () {
-    // window.onload = localStorage.getItem("hotelId");
-    // console.log(localStorage.getItem("hotelId"),localStorage.getItem("hotelName"));
-    console.log(localStorage.getItem("hotelId"));
+
+    console.log(localStorage.getItem("hotelID"),localStorage.getItem("hotelName"));
+    const hotelName = localStorage.getItem("hotelName");
+    $('.navbar-brand').append(hotelName);
+    $('.pageTitle').append(hotelName);
 })
