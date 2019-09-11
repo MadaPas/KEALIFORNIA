@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments/adminFragments :: head(title = 'KEALIFORNIA')">
+</head>
+<body>
+
+<header role="banner" th:replace="fragments/adminFragments :: adminHeader">
+</header>
+<section>
+
+<div class="d-flex flex-column sticky-footer-wrapper">
+    <main class="flex-fill text-center">
+        <div class="container">
+            <div class="jumbotron">
+                <form method="post" action="/hotel/add-hotel/save" th:object="${newHotel}">
+
+                    <input type="hidden" th:field="${newHotel.id}">
+
+                    <label>Name</label>
+                    <input type="text" th:field="${newHotel.name}" required>
+
+                    <button type="submit">
+                        Save
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+</section>
+<footer class="site-footer" role="contentinfo" th:replace="fragments/adminFragments :: footer">
+</footer>
+
+<!-- loader -->
+<div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/main.js"></script>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
