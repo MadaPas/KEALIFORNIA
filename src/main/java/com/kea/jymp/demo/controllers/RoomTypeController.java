@@ -4,6 +4,7 @@ import com.kea.jymp.demo.models.Room;
 import com.kea.jymp.demo.models.RoomType;
 import com.kea.jymp.demo.repositories.RoomRepo;
 import com.kea.jymp.demo.repositories.RoomTypeRepo;
+import com.kea.jymp.demo.services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ public class RoomTypeController {
 
     @Autowired
     RoomTypeRepo roomTypeRepo;
+    @Autowired
+    RoomService roomService;
 
     // Get all roomtypes
     @GetMapping("/api/roomtypes")
@@ -40,7 +43,13 @@ public class RoomTypeController {
         return rooms;
     }
 
-    // Delete one roomtype
+
+    @GetMapping("/api/rooms/from/{sDate}/to/{eDate}/with/{noOfGuests}")
+    @ResponseBody
+    public List<RoomType> findRoomTypeWithNoOfGuests(@PathVariable String sDate, @PathVariable String eDate, @PathVariable int noOfGuests){
+        return roomService.findRoomTypesWithNoOfGuests(sDate, eDate, noOfGuests);
+    }
+
     @DeleteMapping("/api/roomtypes/{id}")
     @ResponseBody
     public void deleteOne(@PathVariable int id) {

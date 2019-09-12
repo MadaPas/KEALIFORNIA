@@ -52,9 +52,21 @@
                 <input type="date" class="form-control" id="end-date" placeholder="Enter date">
             </div>
         </div>
-        <div align="center">
-            <a id="showRoomsButton" class="btn btn-outline-dark btn-lg btn-block">Show available rooms</a>
+        <div class="dropdown mb-3 col text-center" id="selectNoOfGuests">
+            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                How many guests are staying?
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#" data-attr="1">1 person</a>
+                <a class="dropdown-item" href="#" data-attr="2">2 people</a>
+                <a class="dropdown-item" href="#" data-attr="3">3 people</a>
+                <a class="dropdown-item" href="#" data-attr="4">4 people</a>
+                <a class="dropdown-item" href="#" data-attr="5">5 people</a>
+            </div>
         </div>
+<!--        <div align="center">
+            <a id="showRoomTypesButton" class="btn btn-outline-dark btn-lg btn-block">Show available types of room</a>
+        </div>-->
     </form>
 
     <div id="roomContainer">
@@ -101,7 +113,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a type="button" class="btn btn-outline-dark" id="confirmButton">Confirm</a>
+                <a type="button" class="btn btn-outline-dark" id="confirmBookingButton">Confirm</a>
                 <a type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</a>
             </div>
         </div>
@@ -128,7 +140,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!--<script th:src="@{/js/Bookings/Datepicker.js}"></script>-->
+<!--
 <script th:src="@{/js/Bookings/bookRooms.js}"></script>
+-->
+<script th:src="@{/js/Bookings/getData.js}"></script>
+<script th:src="@{/js/Bookings/bookRooms.js}"></script>
+<script th:src="@{/js/Bookings/presentData.js}"></script>
+
 
 </body>
 </html>
