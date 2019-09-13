@@ -57,11 +57,11 @@
                 How many guests are staying?
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" data-attr="1">1 person</a>
-                <a class="dropdown-item" href="#" data-attr="2">2 people</a>
-                <a class="dropdown-item" href="#" data-attr="3">3 people</a>
-                <a class="dropdown-item" href="#" data-attr="4">4 people</a>
-                <a class="dropdown-item" href="#" data-attr="5">5 people</a>
+                <a class="dropdown-item" href="#" th:attr="data-noOfGuests=${1}">1</a>
+                <a class="dropdown-item" href="#" th:attr="data-noOfGuests=${2}">2</a>
+                <a class="dropdown-item" href="#" th:attr="data-noOfGuests=${3}">3</a>
+                <a class="dropdown-item" href="#" th:attr="data-noOfGuests=${4}">4</a>
+                <a class="dropdown-item" href="#" th:attr="data-noOfGuests=${5}">5</a>
             </div>
         </div>
 <!--        <div align="center">
@@ -143,6 +143,10 @@
 <!--
 <script th:src="@{/js/Bookings/bookRooms.js}"></script>
 -->
+
+<!--moment.js library for handling date and time-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" crossorigin="anonymous"></script>
+
 <script th:src="@{/js/Bookings/getData.js}"></script>
 <script th:src="@{/js/Bookings/bookRooms.js}"></script>
 <script th:src="@{/js/Bookings/presentData.js}"></script>

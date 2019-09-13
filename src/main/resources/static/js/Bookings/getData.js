@@ -24,7 +24,15 @@ function getAllRoomTypes() {
     })
 }
 
-function getRoomsWithinDatesForNoOfGuests(sDate, eDate, noOfGuests, roomTypeId) {
+function getRoomsWithinDatesWithNoOfGuests(sDate, eDate, noOfGuests) {
+    return $.ajax({
+        url:`/api/rooms/from/${sDate}/to/${eDate}/with/${noOfGuests}`,
+        method: 'GET',
+        dataType: 'json'
+    })
+}
+
+function getRoomsWithinDatesWithNoOfGuestsForRoomType(sDate, eDate, noOfGuests, roomTypeId) {
     return $.ajax({
         url: `/api/rooms/from/${sDate}/to/${eDate}/with/${noOfGuests}/for/${roomTypeId}`,
         method: 'GET',

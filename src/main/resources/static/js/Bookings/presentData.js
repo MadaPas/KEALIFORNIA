@@ -16,9 +16,7 @@ function showAvailableRoomTypes(roomTypes) {
                                                 </table>
                                             </form>`);
 
-    roomTypes.forEach(function (roomTypeArray) {
-
-        /*roomTypeArray.forEach((roomType) => {
+    roomTypes.forEach((roomType) => {
             $('#availableRoomTypes-table').append(` <tr class="d-flex">
                                                             <td class="col-3" id="roomType" data-attr="${roomType.id}">${roomType.name}</td>
                                                             <td class="col-2" id="capacity" data-attr="${roomType.id}">${roomType.capacity}</td>
@@ -26,8 +24,6 @@ function showAvailableRoomTypes(roomTypes) {
                                                             <td class="col-5" id="description" data-attr="${roomType.id}">${roomType.description}</td>
                                                             <td class="col-1" id="clickButton" data-attr="${roomType.id}"><a class="btn btn-outline-dark" id="selectButton">select</a></td>
                                                         </tr>`);
-        });*/
-
     });
 
 }
