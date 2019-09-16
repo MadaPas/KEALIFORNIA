@@ -1,5 +1,7 @@
 function showAvailableRoomTypes(roomTypes) {
 
+    console.log(roomTypes);
+
     $('#roomContainer').fadeIn(100).html(`<form class="mt-2">
                                                 <h2>Available Rooms</h2>
                                                 <table class="table">
