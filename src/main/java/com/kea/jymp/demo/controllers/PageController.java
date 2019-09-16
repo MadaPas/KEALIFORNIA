@@ -10,16 +10,16 @@ public class PageController {
     @GetMapping("/")
     public String landing(){
 
-        System.out.println("homepage");
+        System.out.println("index");
         return "index.html";
     }
 
     // Index
-    @GetMapping("/index")
-    public String index(){
+    @GetMapping("/home")
+    public String home(){
 
         System.out.println("homepage");
-        return "index.html";
+        return "home.html";
     }
 
     // Contact
