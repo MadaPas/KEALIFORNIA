@@ -12,25 +12,22 @@ $(function() {
     // values
     let startDate =             moment($('#start-date').innerHTML).format("YYYY-MM-DD");
     let endDate =               moment($('#end-date').innerHTML).format("YYYY-MM-DD");
-    let noOfGuests =            $('.dropdown-item').data("attr");
+    let noOfGuests;
+    let roomTypes = [];
     let selectedRoomType =      $('').val();
 
     selectNoOfGuests.on('click', 'a', function() {
 
-        showAvailableRoomTypes(getRoomsWithinDatesWithNoOfGuests(startDate, endDate, this.innerHTML));
+        noOfGuests = this.innerHTML;
+        roomTypes = getRoomsWithinDatesWithNoOfGuests(startDate, endDate, noOfGuests);
+        console.log('noOFGuest', noOfGuests);
+
+        //TODO: This is where problem is
+        let parsedData = JSON.parse(JSON.stringify(roomTypes));
+        console.log(parsedData[0]);
+        showAvailableRoomTypes(roomTypes.responseJSON);
 
     });
-
-    // //set up event listeners
-    // showRoomTypesButton.on('click', () => {
-    //     roomTypes = getAllRoomTypes();
-    // })
-
-
-
-
-
-
 
 
 });
