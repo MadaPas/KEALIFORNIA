@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
-    <title th:text="${title}"></title>
+    <title class="pageTitle"></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,7 +25,7 @@
 <header role="banner" th:fragment="adminHeader">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <div class="navbar-brand ">KEAlifornia Hotel</div>
+            <div class="navbar-brand"></div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,7 +35,7 @@
                     <li class="nav-item">
                         <a
                                 th:classappend="${#request.requestURI == '/' ? 'nav-link__active' : ''}"
-                                class="nav-link" href="/index"
+                                class="nav-link" href="/home"
                         >Home</a>
                     </li>
                     <li class="nav-item">
@@ -108,5 +108,6 @@
     </div>
 </footer>
 <!-- END footer -->
+<script src="js/Home/home.js"></script>
 
 </body>
